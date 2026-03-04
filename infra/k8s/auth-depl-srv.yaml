@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ticketing-auth-depl
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: ticketing-auth
+  template:
+    metadata:
+      labels:
+        app: ticketing-auth
+    spec:
+      containers:
+        - name: ticketing-auth
+          image: mariomalak1/ticketing-auth
+          ports:
+            - containerPort: 8001
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ticketing-auth-srv
+spec:
+  selector:
+    app: ticketing-auth
+  ports:
+    - protocol: TCP
+      port: 8001
+      targetPort: 8001
+

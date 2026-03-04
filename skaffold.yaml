@@ -1,0 +1,24 @@
+apiVersion: skaffold/v4beta13
+kind: Config
+metadata:
+  name: ticketing-app-microservices
+
+manifests:
+  rawYaml:
+    - ./infra/k8s/*
+
+build:
+  local:
+    push: false
+  artifacts:
+    - image: mariomalak1/ticketing-auth
+      context: auth
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: ./app
+
+deploy:
+  kubectl: {}
