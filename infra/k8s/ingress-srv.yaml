@@ -17,4 +17,4 @@ spec:
               service:
                 name: ticketing-auth-srv
                 port:
-                  number: 3000
+                  number: 8001
