@@ -8,11 +8,11 @@ interface UserAttrs {
 interface UserDoc extends mongoose.Document {
     email: string;
     password: string;
-    created_at: string;
-    updated_at: string;
+    createdAt: string;
+    updatedAt: string;
 }
 
-const schema = new mongoose.Schema({
+const schema = new mongoose.Schema<UserDoc, UserModel>({
     email: {
         type: String,
         required: true,
@@ -25,13 +25,15 @@ const schema = new mongoose.Schema({
 }, {timestamps: true});
 
 
-schema.statics.build = function (attrs: UserAttrs) {
-    return new User(attrs);
-}
 
 interface UserModel extends mongoose.Model<UserDoc> {
     build(attrs: UserAttrs): UserDoc;
 }
+
+schema.statics.build = (attrs: UserAttrs) => {
+  return new User(attrs);
+};
+
 
 const User = mongoose.model<UserDoc, UserModel>("User", schema)
 

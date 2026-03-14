@@ -2,7 +2,12 @@ import express from 'express';
 import dotenv from 'dotenv';
 import 'express-async-errors';
 
-dotenv.config({ "path": "./dev.env" });
+if(process.env["NODE_ENV"] === "production"){
+  dotenv.config({ "path": "./.env" });
+}else{
+  dotenv.config({ "path": "./dev.env" });
+}
+
 import { connectDB } from './config/database';
 import globalErrorHandler from './middlewares/global-error-handler.middleware';
 import NotFoundRouteError from './errors/not-found-route-error';

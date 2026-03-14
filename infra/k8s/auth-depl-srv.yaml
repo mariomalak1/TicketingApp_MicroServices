@@ -17,6 +17,10 @@ spec:
           image: mariomalak1/ticketing-auth
           ports:
             - containerPort: 8001
+          env:
+            - name: NODE_ENV 
+              value: production
+            
 
 ---
 apiVersion: v1
