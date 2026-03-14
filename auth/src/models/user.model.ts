@@ -1,5 +1,7 @@
 import mongoose from "../config/database";
 
+import Password from "../services/password";
+
 interface UserAttrs {
     email: string;
     password: string;
@@ -24,7 +26,12 @@ const schema = new mongoose.Schema<UserDoc, UserModel>({
     }
 }, {timestamps: true});
 
-
+schema.pre('save', async function () {
+    if(this.isModified('password')){
+        const hashed = await Password.hash(this.password);
+        this.set("password", hashed);
+    }
+})
 
 interface UserModel extends mongoose.Model<UserDoc> {
     build(attrs: UserAttrs): UserDoc;
