@@ -6,7 +6,7 @@ dotenv.config({ "path": "./dev.env" });
 import { connectDB } from './config/database';
 import globalErrorHandler from './middlewares/global-error-handler.middleware';
 import NotFoundRouteError from './errors/not-found-route-error';
-import mainRoutes from './routes/main.routes';
+import mainRoutes from './routes/index.routes';
 
 const app = express();
 

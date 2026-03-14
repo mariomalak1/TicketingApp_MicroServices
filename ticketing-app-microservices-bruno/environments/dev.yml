@@ -1,0 +1,6 @@
+name: dev
+variables:
+  - name: host
+    value: https://ticketing.dev
+  - name: api
+    value: "{{host}}/api"
