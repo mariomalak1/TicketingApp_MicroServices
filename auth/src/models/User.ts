@@ -5,14 +5,14 @@ interface UserAttrs {
     password: string;
 }
 
-interface UserDoc {
+interface UserDoc extends mongoose.Document {
     email: string;
     password: string;
     created_at: string;
     updated_at: string;
 }
 
-const schema = new mongoose.Schema<UserDoc> ({
+const schema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
