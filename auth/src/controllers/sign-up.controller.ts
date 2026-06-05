@@ -2,8 +2,7 @@ import type { Request, Response, NextFunction } from "express";
 
 import { User } from "../models/index";
 import { BadRequestError } from "../errors/index..errors";
-
-import { created, success } from "../utils/responses";
+import { created } from "../utils/responses";
 
 const signup = async (req: Request, res: Response, next: NextFunction) => {
     const { email, password } = req.body;
@@ -21,7 +20,7 @@ const signup = async (req: Request, res: Response, next: NextFunction) => {
 
     await user.save()
 
-    return created(res, user);
+    return created(res, user, "User created successfully");
 }
 
 export { signup };
