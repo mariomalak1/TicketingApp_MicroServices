@@ -20,6 +20,17 @@ spec:
           env:
             - name: NODE_ENV 
               value: production
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: env-secret
+                  key: JWT_SECRET
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyRef:
+                  name: env-secret
+                  key: MONGO_URI
+
             
 
 ---
