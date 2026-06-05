@@ -23,4 +23,4 @@ const signup = async (req: Request, res: Response, next: NextFunction) => {
     return created(res, user, "User created successfully");
 }
 
-export { signup };
+export default signup;

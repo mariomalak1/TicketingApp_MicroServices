@@ -29,4 +29,4 @@ const signin = async (req: Request, res: Response, next: NextFunction) => {
     return success(res, existing, "User signed in successfully");
 }
 
-export { signin };
+export default signin;
